@@ -12,19 +12,18 @@ class Guerrero {
 	method recibirDanio(unaCantidad) {
 		
 		nivelDeEnergia -= unaCantidad
+		self.ganarExperiencia(1)
 		
-		if (self.noTieneTraje()){
+		if (self.tieneTraje()){
 			
-			self.ganarExperiencia(1)
-		}
-		else{		
 			self.ganarExperiencia(traje.experienciaAdicianal())
 		}
+		
 	}
 	
 	method danioHacia(unGuerrero) {
 		
-		if(self.noTieneTraje() || traje.estaGastado()){
+		if(self.tieneTraje().negate() || traje.estaGastado()){
 			return self.danio() // daño directo
 		}
 		else{
@@ -32,7 +31,7 @@ class Guerrero {
 		}
 	}
 	
-	method noTieneTraje() = traje == null
+	method tieneTraje() = traje != null
 	
 	method ganarExperiencia(unaCantidad) {
 		
@@ -51,7 +50,7 @@ class Guerrero {
 		nivelDeEnergia = energiaOriginal
 	}
 	
-	method defensa() = traje.disminuirDanioDe(self) // amortiguacion()
+	method defensa() = traje.resistenciaA(self) // amortiguacion()
 		
 	
 }
