@@ -1,4 +1,5 @@
 class Traje{
+	
 	var desgate
 	var porcentaje/*??? */
 	
@@ -50,26 +51,24 @@ class TrajeModularizado inherits Traje{
 	override method resistenciaA(unGuerrero) {
 		self.desgastate()
 		
-		return self.piezasBuenas().sum({
-			pieza => pieza.resistencia()
-		})
+		return self.piezasBuenas().sum({	pieza => pieza.resistencia()	})
 	}
-	
-	override method desgastate() {
-		piezas.forEach({
-			pieza => pieza.desgastate()
-		})
-	}
-	
-	method piezasBuenas() = piezas.filter({		pieza => pieza.estaGastada().negate()		})
-	
-	override method estaGastado() = piezas.all({		pieza => pieza.estaGastada()		})
 	
 	override method experienciaAdicional() {
 		
 		return self.porcentajeDePiezasBuenas()/100
 		
 	}
+	
+	override method estaGastado() = piezas.all({		pieza => pieza.estaGastada()		})
+	
+	override method desgastate() {
+		piezas.forEach({	pieza => pieza.desgastate()		})
+	}
+	
+	
+	method piezasBuenas() = piezas.filter({		pieza => pieza.estaGastada().negate()		})
+		
 	method porcentajeDePiezasBuenas() = self.cantidadDePiezasBuenas() / 100
 	
 	method cantidadDePiezasBuenas() = self.piezasBuenas().size()
