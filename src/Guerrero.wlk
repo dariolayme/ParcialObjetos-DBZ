@@ -1,8 +1,8 @@
 class Guerrero {
-	var potencialOfensivo
-	var experiencia
-	var nivelDeEnergia
-	var energiaOriginal
+	var potencialOfensivo =0
+	var experiencia = 0
+	var nivelDeEnergia = 0
+	var energiaOriginal = 0
 	var traje = null
 	
 	method atacarA(unGuerrero) {
@@ -16,7 +16,7 @@ class Guerrero {
 		
 		if (self.tieneTraje()){
 			
-			self.ganarExperiencia(traje.experienciaAdicianal())
+			self.ganarExperiencia(traje.experienciaAdicional())
 		}
 		
 	}
@@ -51,6 +51,8 @@ class Guerrero {
 	}
 	
 	method defensa() = traje.resistenciaA(self) // amortiguacion()
+	
+	method poderOfensivo() = potencialOfensivo
 		
 	
 }

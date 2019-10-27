@@ -1,7 +1,6 @@
 class Traje{
 	
 	var desgate
-	var porcentaje/*??? */
 	
 	method resistenciaA(unGuerrero)
 	
@@ -46,7 +45,7 @@ object trajeEntrenamiento inherits Traje {
 
 class TrajeModularizado inherits Traje{
 	
-	var piezas
+	var piezas = []
 	
 	override method resistenciaA(unGuerrero) {
 		self.desgastate()
